@@ -12,7 +12,7 @@ const Pagination: React.FC<PaginationProps> = ({
   setDefaultUrl,
 }) => {
   return (
-    <Stack direction="row" spacing={2} justifyContent="center" sx={{ mt: 4 }}>
+    <Stack direction="row" spacing={2} justifyContent="center" my={4}>
       <Button
         variant="contained"
         disabled={!previous}

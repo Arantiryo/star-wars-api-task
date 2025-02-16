@@ -6,6 +6,7 @@ import { fetcher } from "./utils/utils";
 
 const theme = createTheme({
   palette: {
+    mode: "dark",
     action: {
       disabled: "#ffffff",
     },

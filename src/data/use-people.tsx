@@ -2,11 +2,8 @@ import useSWR from "swr";
 import { BASE_URL, fetcher } from "../utils/utils";
 import type { ListOfPeopleResponse } from "../utils/types";
 
-const usePeople = (defaultUrl = `${BASE_URL}/people/`) => {
-  const { data, error, isLoading } = useSWR<ListOfPeopleResponse>(
-    defaultUrl,
-    fetcher
-  );
+const usePeople = (url = `${BASE_URL}/people/`) => {
+  const { data, error, isLoading } = useSWR<ListOfPeopleResponse>(url, fetcher);
 
   return {
     people: data?.results,
