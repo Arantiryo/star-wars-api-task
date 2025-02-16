@@ -33,7 +33,12 @@ const PeopleList = () => {
       <Grid container spacing={3}>
         {people?.map((person) => (
           <Grid size={3} key={person.url}>
-            <Card sx={{ borderRadius: 4, minWidth: "270px" }}>
+            <Card
+              sx={{
+                borderRadius: 4,
+                minWidth: "270px",
+              }}
+            >
               <CardContent>
                 <Typography variant="h5" component="h2">
                   {person.name}

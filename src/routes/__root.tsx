@@ -1,8 +1,7 @@
 import { createTheme, ThemeProvider } from "@mui/material";
+import { createRootRoute, Outlet } from "@tanstack/react-router";
+import { fetcher } from "../utils/utils";
 import { SWRConfig } from "swr";
-import "./App.css";
-import Home from "./pages/index";
-import { fetcher } from "./utils/utils";
 
 const theme = createTheme({
   palette: {
@@ -13,14 +12,12 @@ const theme = createTheme({
   },
 });
 
-function App() {
-  return (
+export const Route = createRootRoute({
+  component: () => (
     <ThemeProvider theme={theme}>
       <SWRConfig value={{ fetcher }}>
-        <Home />
+        <Outlet />
       </SWRConfig>
     </ThemeProvider>
-  );
-}
-
-export default App;
+  ),
+});
