@@ -13,6 +13,7 @@ import usePerson from "../data/use-person";
 import { Field, Formik } from "formik";
 import { Person } from "../utils/types";
 import usePersonStore from "../store/person-store";
+import { useNotifications } from "@toolpad/core/useNotifications";
 
 export const Route = createFileRoute("/$personId")({
   component: PersonDetails,
@@ -65,6 +66,7 @@ type PersonCardProps = {
 
 const PersonCard = ({ person, personId }: PersonCardProps) => {
   const savePerson = usePersonStore((state) => state.savePerson);
+  const notifications = useNotifications();
 
   return (
     <>
@@ -89,9 +91,14 @@ const PersonCard = ({ person, personId }: PersonCardProps) => {
                 },
                 personId
               );
+
+              notifications.show("Character saved successfully!", {
+                severity: "success",
+                autoHideDuration: 3000,
+              });
             }}
           >
-            {({ handleSubmit, resetForm }) => (
+            {({ handleSubmit, resetForm, dirty }) => (
               <form onSubmit={handleSubmit}>
                 <Typography variant="h4" component="h1" gutterBottom>
                   <Field
@@ -151,11 +158,23 @@ const PersonCard = ({ person, personId }: PersonCardProps) => {
                     <Button
                       variant="outlined"
                       color="error"
-                      onClick={() => resetForm()}
+                      disabled={!dirty}
+                      onClick={() => {
+                        resetForm();
+                        notifications.show("Changes discarded!", {
+                          severity: "warning",
+                          autoHideDuration: 3000,
+                        });
+                      }}
                     >
                       Discard Changes
                     </Button>
-                    <Button type="submit" variant="contained" color="primary">
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      color="primary"
+                      disabled={!dirty}
+                    >
                       Save Changes
                     </Button>
                   </Stack>
