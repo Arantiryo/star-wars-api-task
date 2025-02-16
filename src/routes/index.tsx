@@ -8,7 +8,14 @@ export const Route = createFileRoute("/")({
 
 export default function Index() {
   return (
-    <Container maxWidth="lg" sx={{ height: "100vh", py: 2 }}>
+    <Container
+      maxWidth="lg"
+      sx={{
+        height: "100%",
+        py: 2,
+        minWidth: "calc(90vw - 48px)",
+      }}
+    >
       <Typography variant="h2" component="h1" fontWeight="bold" gutterBottom>
         Star Wars Characters
       </Typography>

@@ -24,6 +24,7 @@ const Search: React.FC<SearchProps> = ({ search, setSearch }) => {
   return (
     <TextField
       fullWidth
+      autoFocus
       label="Search characters"
       variant="outlined"
       value={value}
