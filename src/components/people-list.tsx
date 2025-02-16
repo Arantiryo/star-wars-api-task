@@ -63,7 +63,7 @@ const PeopleCards = ({ people }: { people?: Person[] }) => {
         const personId = person.url.split("/").filter(Boolean).pop() || "1";
 
         return (
-          <Grid size={3} key={person.url}>
+          <Grid size={{ xs: 12, sm: 6, md: 4 }} key={person.url}>
             <Link to={`/$personId`} params={{ personId }}>
               <Card sx={{ borderRadius: 4, cursor: "pointer" }}>
                 <CardContent>

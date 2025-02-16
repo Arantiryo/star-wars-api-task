@@ -111,42 +111,48 @@ const PersonCard = ({ person, personId }: PersonCardProps) => {
                 </Typography>
 
                 <Stack spacing={2}>
-                  <Field
-                    name="height"
-                    as={TextField}
-                    label="Height (cm)"
-                    fullWidth
-                  />
-                  <Field
-                    name="mass"
-                    as={TextField}
-                    label="Mass (kg)"
-                    fullWidth
-                  />
-                  <Field
-                    name="hair_color"
-                    as={TextField}
-                    label="Hair Color"
-                    fullWidth
-                  />
-                  <Field
-                    name="skin_color"
-                    as={TextField}
-                    label="Skin Color"
-                    fullWidth
-                  />
-                  <Field
-                    name="eye_color"
-                    as={TextField}
-                    label="Eye Color"
-                    fullWidth
-                  />
-                  <Field
-                    name="birth_year"
-                    as={TextField}
-                    label="Birth Year"
-                    fullWidth
-                  />
+                  <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
+                    <Field
+                      name="height"
+                      as={TextField}
+                      label="Height (cm)"
+                      fullWidth
+                    />
+                    <Field
+                      name="mass"
+                      as={TextField}
+                      label="Mass (kg)"
+                      fullWidth
+                    />
+                    <Field
+                      name="birth_year"
+                      as={TextField}
+                      label="Birth Year"
+                      fullWidth
+                    />
+                  </Stack>
+
+                  <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
+                    <Field
+                      name="hair_color"
+                      as={TextField}
+                      label="Hair Color"
+                      fullWidth
+                    />
+                    <Field
+                      name="skin_color"
+                      as={TextField}
+                      label="Skin Color"
+                      fullWidth
+                    />
+                    <Field
+                      name="eye_color"
+                      as={TextField}
+                      label="Eye Color"
+                      fullWidth
+                    />
+                  </Stack>
+
                   <Field
                     name="gender"
                     as={TextField}

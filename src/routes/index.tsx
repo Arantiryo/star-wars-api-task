@@ -16,7 +16,15 @@ export default function Index() {
         minWidth: "calc(90vw - 48px)",
       }}
     >
-      <Typography variant="h2" component="h1" fontWeight="bold" gutterBottom>
+      <Typography
+        variant="h2"
+        component="h1"
+        fontWeight="bold"
+        sx={{
+          fontSize: { xs: "2rem", sm: "3.75rem" },
+        }}
+        gutterBottom
+      >
         Star Wars Characters
       </Typography>
       <PeopleList />
