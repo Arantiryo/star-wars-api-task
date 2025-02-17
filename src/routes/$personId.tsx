@@ -29,8 +29,6 @@ export default function PersonDetails() {
     );
   }
 
-  if (!person) return null;
-
   return (
     <Container
       maxWidth="md"
@@ -48,25 +46,29 @@ export default function PersonDetails() {
       {isLoading ? (
         <CircularProgress color="info" />
       ) : (
-        <PersonCard person={person} personId={personId} />
+        <>
+          <PersonCard person={person} personId={personId} />
+          <Link to="/">
+            <Button variant="contained" color="info">
+              Home
+            </Button>
+          </Link>
+        </>
       )}
-      <Link to="/">
-        <Button variant="contained" color="info">
-          Home
-        </Button>
-      </Link>
     </Container>
   );
 }
 
 type PersonCardProps = {
-  person: Person;
+  person: Person | undefined;
   personId: string;
 };
 
 const PersonCard = ({ person, personId }: PersonCardProps) => {
   const savePerson = usePersonStore((state) => state.savePerson);
   const notifications = useNotifications();
+
+  if (!person) return null;
 
   return (
     <>
@@ -83,7 +85,7 @@ const PersonCard = ({ person, personId }: PersonCardProps) => {
               birth_year: person.birth_year,
               gender: person.gender,
             }}
-            onSubmit={(values) => {
+            onSubmit={(values, { resetForm }) => {
               savePerson(
                 {
                   ...person,
@@ -96,6 +98,8 @@ const PersonCard = ({ person, personId }: PersonCardProps) => {
                 severity: "success",
                 autoHideDuration: 3000,
               });
+
+              resetForm({ values });
             }}
           >
             {({ handleSubmit, resetForm, dirty }) => (
