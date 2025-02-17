@@ -85,7 +85,7 @@ const PersonCard = ({ person, personId }: PersonCardProps) => {
               birth_year: person.birth_year,
               gender: person.gender,
             }}
-            onSubmit={(values) => {
+            onSubmit={(values, { resetForm }) => {
               savePerson(
                 {
                   ...person,
@@ -98,6 +98,8 @@ const PersonCard = ({ person, personId }: PersonCardProps) => {
                 severity: "success",
                 autoHideDuration: 3000,
               });
+
+              resetForm({ values });
             }}
           >
             {({ handleSubmit, resetForm, dirty }) => (
